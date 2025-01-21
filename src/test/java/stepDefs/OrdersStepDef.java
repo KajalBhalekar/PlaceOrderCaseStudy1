@@ -1,3 +1,4 @@
+
 package stepDefs;
 
 import org.openqa.selenium.WebDriver;
@@ -38,22 +39,24 @@ public class OrdersStepDef {
 		loginPage.validLogin(strUser, strPwd);
 		
 	}
-	
-	
-	
-	@Given("User should be on Home Page")
+
+	@Given("User should be on Home page")
 	public void user_should_be_on_home_page() {
+		
 		Assert.assertTrue(listPage.isOnProducts());
 	   
 	}
 	
+
 	@When("User add item to cart")
 	public void user_add_item_to_cart() {
+		
 		listPage.addtoCart();
 	}
 	
 	@Then("Item must be added")
 	public void item_must_be_added() {
+		
 		listPage.viewCart();
 		Assert.assertTrue(cartPage.isItemAdded());
 	}
@@ -71,6 +74,27 @@ public class OrdersStepDef {
 	@Then("Should navigate to Checkout page")
 	public void should_navigate_to_checkout_page() {
 	    checkoutpage.provideDeatils("Test", "User","34343");
+
+	}
+	
+	@Given("cart must have items")
+	public void cart_must_have_items() {
+		listPage.viewCart();
+		Assert.assertTrue(cartPage.isItemAdded());
+	}
+
+	@When("User delete an item")
+	public void user_delete_an_item() {
+	   cartPage.RmvItem();
+	   cartPage.checkoutItems();
+	   
+	   
+	   
+	}
+
+	@Then("Should delete item from cart")
+	public void should_delete_item_from_cart() {
+		checkoutpage.provideDeatils("Test", "User","34343");
 	    checkoutpage.checkoutOrder();
 	    Assert.assertTrue(checkoutpage.isOrderSuccess());
 	}

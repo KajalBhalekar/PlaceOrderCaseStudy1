@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ChkoutPage {
 	
+
 	@FindBy(id="first-name")
 	WebElement fname;
 	
@@ -35,13 +36,7 @@ public class ChkoutPage {
 		
 	}
 	
-//	public void provideDeatils() {
-//		fname.sendKeys("ABC");
-//		lname.sendKeys("XZY");
-//		zipcode.sendKeys("441001");
-//		
-//	}
-	
+
 	public void provideDeatils(String strfName, String strlName,String pCode) {
 		fname.sendKeys(strfName);
 		lname.sendKeys(strlName);
@@ -49,6 +44,8 @@ public class ChkoutPage {
 		conBtn.click();
 		
 	}
+	
+	
 	
 	public void checkoutOrder() {
 		finishBtn.click();

@@ -8,13 +8,13 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CartPage {
 	
-	@FindBy(css="div-cart_item")
+	@FindBy(css=".cart_list[data-test='cart-list']")
 	WebElement cartList;
 	
 	@FindAll(value= @FindBy(css="div.cart.item"))
 	WebElement items;
 	
-	@FindBy(id="remove-sauce-labs-backpack")
+	@FindBy(xpath ="//button[@data-test='remove-sauce-labs-backpack']")
 	WebElement rmvBtn;
 	
 	@FindBy(css="button[data-test='container-shopping']")
@@ -23,11 +23,7 @@ public class CartPage {
 	@FindBy(id="checkout")
 	WebElement chkoutBtn ;
 	
-	//Actions
-	//verify element is added
-	//Remove item
-	//Continue Shopping
-	// Checkout
+	
 	
 	public CartPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
@@ -35,12 +31,17 @@ public class CartPage {
 	}
 	
 	public boolean isItemAdded() {
-		//Method1
+		
 		return cartList.isDisplayed();
+	}
+	
+	public void RmvItem() {
+		rmvBtn.click();
 	}
 	
 	public void checkoutItems() {
 		chkoutBtn.click();
 	}
+
 
 }

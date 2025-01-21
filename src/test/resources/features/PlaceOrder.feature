@@ -3,7 +3,7 @@ Feature: Place order
 Background: User Login
 Given User is on login Page
 When User enters "standard_user" and "secret_sauce"
-Then User should be on Home Page 
+Then User should be on Home page 
 
 
 Scenario: Add Item to cart
@@ -15,3 +15,8 @@ Scenario: Checkout Order
 Given User is on cart page
 When User do checkout
 Then Should navigate to Checkout page
+
+Scenario: Delete Item
+Given cart must have items
+When User delete an item
+Then Should delete item from cart
